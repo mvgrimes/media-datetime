@@ -1,4 +1,6 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+
+# ABSTRACT: Script to demostrate Media::DateTime; prints creation DateTime
 
 use strict;
 use warnings;

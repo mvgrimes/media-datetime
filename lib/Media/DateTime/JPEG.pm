@@ -1,5 +1,7 @@
 package Media::DateTime::JPEG;
 
+# ABSTRACT: A plugin for the C<Media::DateTime> module to support JPEG files
+
 use strict;
 use warnings;
 
@@ -7,7 +9,6 @@ use Carp;
 use Image::ExifTool;
 use DateTime;
 
-our $VERSION = '0.31';
 my $exifTool;
 
 sub datetime {
@@ -60,11 +61,6 @@ sub match {
 
 __END__
 
-=head1 NAME
-
-Media::DateTime::JPEG - A plugin for the C<Media::DateTime> module to support
-JPEG files.
-
 =head1 SYNOPSIS
 
 C<Media::DateTime::JPEG> shouldn't be used directly. See C<Media::DateTime>.
@@ -91,22 +87,9 @@ value if we are unable to parse it.
 See C<Media::DateTime> for usage. C<Image::Info> is used to extract data from
 JPEG files.
 
-=head1 AUTHOR
-
-Mark Grimes, E<lt>mgrimes@cpan.org<gt>
-
 =head1 FUTURE PLANS
 
 May use a more flexible approach to assertaining if a file is a jpeg and 
 might check that exif data exists in the C<match> method.
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2006 by mgrimes
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.2 or,
-at your option, any later version of Perl 5 you may have available.
-
 
 =cut

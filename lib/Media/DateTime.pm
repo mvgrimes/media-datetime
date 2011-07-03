@@ -1,18 +1,6 @@
 package Media::DateTime;
 
-###########################################################################
-# Media::DateTime
-# Mark Grimes
-#
-# A simple module to extract the timestamp from media files in an flexible 
-# manner.
-#
-# Copyright (c) 2006 Mark Grimes (mgrimes@cpan.org).
-# All rights reserved. This program is free software; you can redistribute
-# it and/or modify it under the same terms as Perl itself.
-#
-# Formatted with tabstops at 4
-###########################################################################
+# ABSTRACT: A simple module to extract the timestamp from media files in an flexible manner.
 
 use strict;
 use warnings;
@@ -23,8 +11,6 @@ use Module::Pluggable
 		search_path	=> 'Media::DateTime',
 		require		=> 1,		
 		sub_name	=> 'matchers';
-
-our $VERSION = '0.44';
 
 sub new {
 	my $that  = shift;
@@ -55,11 +41,6 @@ sub _datetime_from_filesystem_stamp {
 __END__
 
 # Below is stub documentation for your module. You'd better edit it!
-
-=head1 NAME
-
-Media::DateTime - An highly extensible module to extract the creation
-date and time from a file.
 
 =head1 SYNOPSIS
 
@@ -119,18 +100,5 @@ JPEG files for the C<Media::DateTime::JPEG> plugin.
 Make sure you have configured the local time zone on your machine. See
 C<DateTime::TimeZone::Local> for information on how the timezone is 
 determined.
-
-=head1 AUTHOR
-
-Mark Grimes, E<lt>mgrimes@cpan.org<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2006 by mgrimes
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.2 or,
-at your option, any later version of Perl 5 you may have available.
-
 
 =cut
