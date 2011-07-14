@@ -1,6 +1,7 @@
 package Media::DateTime;
 
 # ABSTRACT: A simple module to extract the timestamp from media files in an flexible manner.
+# VERSION
 
 use strict;
 use warnings;

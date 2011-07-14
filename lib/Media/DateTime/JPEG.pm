@@ -1,6 +1,7 @@
 package Media::DateTime::JPEG;
 
 # ABSTRACT: A plugin for the C<Media::DateTime> module to support JPEG files
+# VERSION
 
 use strict;
 use warnings;
