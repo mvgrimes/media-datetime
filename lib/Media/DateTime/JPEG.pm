@@ -1,7 +1,6 @@
 package Media::DateTime::JPEG;
 
 # ABSTRACT: A plugin for the C<Media::DateTime> module to support JPEG files
-# VERSION
 
 use strict;
 use warnings;
@@ -9,6 +8,7 @@ use warnings;
 use Carp;
 use Image::ExifTool;
 use DateTime;
+use Try::Tiny;
 
 my $exifTool;
 
@@ -21,33 +21,49 @@ sub datetime {
         return;
     };
 
-    my $datetime = $exifTool->GetValue('DateTimeOriginal');
-    do {
-        warn
-          "JPEG does not contain DateTimeOriginal exif entry ($f),\nFallback to file timestamp.\n";
+    my $datetime = $exifTool->GetValue('DateTimeOriginal')
+      or do {
+        warn "JPEG does not contain DateTimeOriginal exif entry ($f),\n"
+          . "Fallback to file timestamp.\n";
         return;
-    } unless $datetime;
+      };
 
     # DateTime format = yyyy:mm:dd hh:mm:ss
     my ( $y, $m, $d, $h, $min, $s ) = $datetime =~ m/
-						(\d{4})  :	# year
-						(\d{2})  :  # month
-						(\d{2})     # day
-							\s		# space
-						(\d{2})  :  # hour 
-						(\d{2})  :  # min
-						(\d{2})     # sec
-					/x
-      or die "failed DateTime pattern match in $f\n";
+                        (\d{4})  :  # year
+                        (\d{2})  :  # month
+                        (\d{2})     # day
+                            \s      # space
+                        (\d{2})  :  # hour
+                        (\d{2})  :  # min
+                        (\d{2})     # sec
+                    /x
+      or do {
+        warn "failed DateTime pattern match in $f\n"
+          . "Fallback to file timestamp";
+        return;
+      };
 
-    my $date = DateTime->new(
-        year   => $y,
-        month  => $m,
-        day    => $d,
-        hour   => $h,
-        minute => $min,
-        second => $s,
-    ) or die "couldnt create DateTime";
+    my $date = try {
+        DateTime->new(
+            year   => $y,
+            month  => $m,
+            day    => $d,
+            hour   => $h,
+            minute => $min,
+            second => $s,
+        );
+    }
+    catch {
+        if (/to DateTime::new did not pass/) {
+            warn
+              "JPEG's DateTimeOriginal exif entry ($f) not a valid datetime.\n"
+              . "Fallback to file timestamp.\n";
+            return undef;
+        } else {
+            die;
+        }
+    };
 
     return $date;
 }
@@ -56,7 +72,7 @@ sub match {
     my ( $self, $f ) = @_;
 
     return $f =~ /\.jpe?g$/i;    ## no critic
-         # TODO: should we use something more complicated here? maybe mime type?
+        # TODO: should we use something more complicated here? maybe mime type?
 }
 
 1;

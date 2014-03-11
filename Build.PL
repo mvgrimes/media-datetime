@@ -10,6 +10,7 @@ my $build = Module::Build->new(
         'Module::Pluggable' => 0,
         'Image::ExifTool'   => 0,
         'DateTime'          => 0,
+        'Try::Tiny'         => 0,
     },
     build_requires => {
         'Test::More'         => 0,

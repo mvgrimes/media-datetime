@@ -12,7 +12,7 @@ plan( skip_all => 'Local timezone is not configured, see DateTime::TimeZone' )
   if $@ =~ /determine local time/;
 plan( skip_all => 'Need the touch command to run these tests' )
   unless which 'touch';
-plan tests => 4;
+plan tests => 5;
 
 my $s = 't/ex/src';
 
@@ -41,12 +41,17 @@ is(
 is(
     Media::DateTime->datetime("$s/empty.jpg"),
     date( 2006, 2, 7, 13, 23, 18 ),
-    'fails correct for empty .jpg'
+    'corrects for empty .jpg'
 );
 is(
     Media::DateTime->datetime("$s/no-exif.jpg"),
     date( 2006, 2, 7, 13, 23, 18 ),
-    'fails correct for no exif'
+    'corrects for no exif'
+);
+is(
+    Media::DateTime->datetime("$s/zero-in-exif.jpg"),
+    date( 2014, 3, 11, 17, 47, 46 ),
+    'corrects for 00:00:00 in exif'
 );
 
 sub date {
