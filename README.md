@@ -4,7 +4,7 @@ Media::DateTime - A simple module to extract the timestamp from media files in a
 
 # VERSION
 
-version 0.45
+version 0.48
 
 # SYNOPSIS
 
