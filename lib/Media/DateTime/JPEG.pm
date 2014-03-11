@@ -63,6 +63,16 @@ sub match {
 
 __END__
 
+=pod
+
+=head1 NAME
+
+Media::DateTime::JPEG - A plugin for the C<Media::DateTime> module to support JPEG files
+
+=head1 VERSION
+
+version 0.45
+
 =head1 SYNOPSIS
 
 C<Media::DateTime::JPEG> shouldn't be used directly. See C<Media::DateTime>.
@@ -93,5 +103,16 @@ JPEG files.
 
 May use a more flexible approach to assertaining if a file is a jpeg and 
 might check that exif data exists in the C<match> method.
+
+=head1 AUTHOR
+
+unknown
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by unknown.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

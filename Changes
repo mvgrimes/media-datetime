@@ -1,3 +1,23 @@
-Change log for Media::DateTime
+Changes for Media::DateTime
 
-{{$NEXT}}
+0.42 2008-01-03 02:45  mgrimes
+
+    * .: updated svn:ignore
+    * ., META.yml, Makefile.PL: Minor updates
+    * Build.PL: Added Client::Lirc module
+      Updated the build_requires
+    * MANIFEST: Added file to manifest
+    * Build.PL, lib/Media/DateTime.pm, t/10-basic.t, t/11-noobj.t:
+      Updated tests to check for local timezone
+    * t/96-kwalitee.t, t/97-critic.t, t/98-pod.t, t/99-podcoverage.t,
+      t/perlcriticrc: Updated author tests
+    * MANIFEST, t/97-critic.t, t/98-pod.t, t/99-podcoverage.t,
+      t/perlcriticrc: Tweaking tests
+    * samples, samples/dates.pl: Added example script
+
+0.41 2006-10-04 23:43  mgrimes
+
+    * META.yml, TODO: Cleanup
+    * lib/Media/DateTime.pm: Updated the version
+    * t/97-critic.t: Fixed use -> eval so we don't blow up if Critic
+      isn't installed.

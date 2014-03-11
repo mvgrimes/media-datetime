@@ -1,10 +1,11 @@
 package Media::DateTime;
 
 # ABSTRACT: A simple module to extract the timestamp from media files in an flexible manner.
-# VERSION
 
 use strict;
 use warnings;
+
+our $VERSION = '0.45';
 
 use Carp;
 use DateTime;
@@ -41,7 +42,15 @@ sub _datetime_from_filesystem_stamp {
 
 __END__
 
-# Below is stub documentation for your module. You'd better edit it!
+=pod
+
+=head1 NAME
+
+Media::DateTime - A simple module to extract the timestamp from media files in an flexible manner.
+
+=head1 VERSION
+
+version 0.45
 
 =head1 SYNOPSIS
 
@@ -101,5 +110,16 @@ JPEG files for the C<Media::DateTime::JPEG> plugin.
 Make sure you have configured the local time zone on your machine. See
 C<DateTime::TimeZone::Local> for information on how the timezone is 
 determined.
+
+=head1 AUTHOR
+
+unknown
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2014 by unknown.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
