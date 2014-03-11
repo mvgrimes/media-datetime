@@ -8,33 +8,33 @@ use warnings;
 
 use Carp;
 use DateTime;
-use Module::Pluggable 
-		search_path	=> 'Media::DateTime',
-		require		=> 1,		
-		sub_name	=> 'matchers';
+use Module::Pluggable
+  search_path => 'Media::DateTime',
+  require     => 1,
+  sub_name    => 'matchers';
 
 sub new {
-	my $that  = shift;
-	my $class = ref($that) || $that;	# Enables use to call $instance->new()
-	return bless {}, $class;
+    my $that = shift;
+    my $class = ref($that) || $that;    # Enables use to call $instance->new()
+    return bless {}, $class;
 }
 
 sub datetime {
-	my ($self,$f) = @_;
-	for my $class ($self->matchers){
-		if( $class->match( $f ) ){
-			my $v = $class->datetime( $f );
-			return $v if defined $v;
-		}
-	}
-	return $self->_datetime_from_filesystem_stamp( $f );
+    my ( $self, $f ) = @_;
+    for my $class ( $self->matchers ) {
+        if ( $class->match($f) ) {
+            my $v = $class->datetime($f);
+            return $v if defined $v;
+        }
+    }
+    return $self->_datetime_from_filesystem_stamp($f);
 }
 
 sub _datetime_from_filesystem_stamp {
-	my ($self, $f) = @_;
+    my ( $self, $f ) = @_;
 
-	my $c_date = (stat($f))[9];
-	return DateTime->from_epoch( epoch => $c_date, time_zone => 'local' );
+    my $c_date = ( stat($f) )[9];
+    return DateTime->from_epoch( epoch => $c_date, time_zone => 'local' );
 }
 
 1;

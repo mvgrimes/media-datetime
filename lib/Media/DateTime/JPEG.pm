@@ -13,23 +13,23 @@ use DateTime;
 my $exifTool;
 
 sub datetime {
-	my ($self, $f) = @_;
+    my ( $self, $f ) = @_;
 
-	$exifTool = Image::ExifTool->new() unless $exifTool;
-	$exifTool->ExtractInfo( $f ) or do {
-		warn "Exiftool unable to read: $f\nFallback to file timestamp.\n";
-		return;       
-	};                  
+    $exifTool = Image::ExifTool->new() unless $exifTool;
+    $exifTool->ExtractInfo($f) or do {
+        warn "Exiftool unable to read: $f\nFallback to file timestamp.\n";
+        return;
+    };
 
-	my $datetime = $exifTool->GetValue( 'DateTimeOriginal' );
-	do {
-		warn "JPEG does not contain DateTimeOriginal exif entry ($f),\nFallback to file timestamp.\n";
-		return;
-	} unless $datetime;
+    my $datetime = $exifTool->GetValue('DateTimeOriginal');
+    do {
+        warn
+          "JPEG does not contain DateTimeOriginal exif entry ($f),\nFallback to file timestamp.\n";
+        return;
+    } unless $datetime;
 
-
-	# DateTime format = yyyy:mm:dd hh:mm:ss
-	my ($y,$m,$d,$h,$min,$s) = $datetime =~ m/
+    # DateTime format = yyyy:mm:dd hh:mm:ss
+    my ( $y, $m, $d, $h, $min, $s ) = $datetime =~ m/
 						(\d{4})  :	# year
 						(\d{2})  :  # month
 						(\d{2})     # day
@@ -38,25 +38,26 @@ sub datetime {
 						(\d{2})  :  # min
 						(\d{2})     # sec
 					/x
-		or die "failed DateTime pattern match in $f\n";
+      or die "failed DateTime pattern match in $f\n";
 
-	my $date = DateTime->new(	year	=> $y,
-								month	=> $m,
-								day		=> $d,
-		   						hour	=> $h,
-								minute	=> $min,
-								second	=> $s,
-					) or die "couldnt create DateTime";
+    my $date = DateTime->new(
+        year   => $y,
+        month  => $m,
+        day    => $d,
+        hour   => $h,
+        minute => $min,
+        second => $s,
+    ) or die "couldnt create DateTime";
 
-	return $date;
+    return $date;
 }
 
-sub match { 
-	my ($self,$f) = @_;
+sub match {
+    my ( $self, $f ) = @_;
 
-	return $f =~ /\.jpe?g$/i;			## no critic
-	# TODO: should we use something more complicated here? maybe mime type?
-}   
+    return $f =~ /\.jpe?g$/i;    ## no critic
+         # TODO: should we use something more complicated here? maybe mime type?
+}
 
 1;
 
