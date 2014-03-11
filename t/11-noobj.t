@@ -20,6 +20,7 @@ system("touch -m -t 200602071323.18 $s/textfile.txt");
 system("touch -m -t 200602071323.18 $s/empty.jpg");
 system("touch -m -t 200602071323.18 $s/exif-corrupt.jpg");
 system("touch -m -t 200602071323.18 $s/no-exif.jpg");
+system("touch -m -t 200602071323.18 $s/zero-in-exif.jpg");
 
 # Should work
 is(
@@ -50,7 +51,7 @@ is(
 );
 is(
     Media::DateTime->datetime("$s/zero-in-exif.jpg"),
-    date( 2014, 3, 11, 17, 47, 46 ),
+    date( 2006, 2, 7, 13, 23, 18 ),
     'corrects for 00:00:00 in exif'
 );
 
