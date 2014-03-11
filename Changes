@@ -1,5 +1,12 @@
 Changes for Media::DateTime
 
+0.45 - Tue Mar 11 17:50:05 EDT 2014
+    * Fixes bug when the exif timestamp is invalid
+    * Converts back to a non-dzil distribution, continues cleanup
+    - Adds github repo
+    - Moves bug tracker to github
+    * Runs Perl::Tidy over everything
+
 0.42 2008-01-03 02:45  mgrimes
 
     * .: updated svn:ignore
