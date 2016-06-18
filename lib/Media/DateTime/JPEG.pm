@@ -10,6 +10,7 @@ our $VERSION = '0.48';
 use Carp;
 use Image::ExifTool;
 use DateTime;
+use Scalar::Util 'blessed';
 use Try::Tiny;
 
 my $exifTool;
@@ -57,7 +58,7 @@ sub datetime {
         );
     }
     catch {
-        if (/to DateTime::new did not pass/) {
+        if ((blessed $_ && $_->isa('Specio::Exception')) || /to DateTime::new did not pass/) {
             warn
               "JPEG's DateTimeOriginal exif entry ($f) not a valid datetime.\n"
               . "Fallback to file timestamp.\n";
