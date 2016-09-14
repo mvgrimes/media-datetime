@@ -1,8 +1,9 @@
 Changes for Media::DateTime
 
+0.49 - Wed Sep 14 17:07:41 EDT 2016
     * Fix to work with possible future DateTime versions that throw different
-      exceptions when parameters are invalid. Patch by Dave Rolsky. GitHub PR
-      #1.
+      exceptions when parameters are invalid. Patch by Dave Rolsky.
+      GitHub PR #1.
 
 0.48 - Tue Mar 11 18:03:37 EDT 2014
     * Adds version to JPEG.pm to make pause happy

@@ -5,7 +5,7 @@ package Media::DateTime::JPEG;
 use strict;
 use warnings;
 
-our $VERSION = '0.48';
+our $VERSION = '0.49';
 
 use Carp;
 use Image::ExifTool;
@@ -90,7 +90,7 @@ Media::DateTime::JPEG - A plugin for the C<Media::DateTime> module to support JP
 
 =head1 VERSION
 
-version 0.48
+version 0.49
 
 =head1 SYNOPSIS
 
@@ -129,7 +129,7 @@ Mark Grimes, E<lt>mgrimes@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2015 by Mark Grimes, E<lt>mgrimes@cpan.orgE<gt>.
+This software is copyright (c) 2016 by Mark Grimes, E<lt>mgrimes@cpan.orgE<gt>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

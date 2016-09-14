@@ -39,7 +39,7 @@ README
 !README.md
 
 # Local::lib install:
-.local-v*
+local/
 
 # O/S specific temp/meta files:
 .DS_Store

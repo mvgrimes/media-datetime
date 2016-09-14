@@ -4,7 +4,7 @@ Media::DateTime - A simple module to extract the timestamp from media files in a
 
 # VERSION
 
-version 0.48
+version 0.49
 
 # SYNOPSIS
 
@@ -63,11 +63,11 @@ determined.
 
 # AUTHOR
 
-unknown
+Mark Grimes, <mgrimes@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by unknown.
+This software is copyright (c) 2016 by Mark Grimes, <mgrimes@cpan.org>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
