@@ -1,6 +1,8 @@
 {
    "abstract" : "A simple module to extract the timestamp from media files in an flexible manner.",
-   "author" : [],
+   "author" : [
+      "Mark Grimes, E<lt>mgrimes@cpan.orgE<gt>"
+   ],
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4205",
    "license" : [
@@ -34,16 +36,6 @@
             "Try::Tiny" : "0",
             "perl" : "5.008"
          }
-      }
-   },
-   "provides" : {
-      "Media::DateTime" : {
-         "file" : "lib/Media/DateTime.pm",
-         "version" : "0.48"
-      },
-      "Media::DateTime::JPEG" : {
-         "file" : "lib/Media/DateTime/JPEG.pm",
-         "version" : "0.48"
       }
    },
    "release_status" : "stable",
